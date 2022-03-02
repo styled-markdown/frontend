@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import MarkdownIt from "markdown-it";
 
+import { markdownParser as md } from "../../utils/markdown";
 import { markdownExample } from "../../constants/constants";
 
 const EditorContainer = styled.div`
@@ -46,7 +46,6 @@ const EditorBody = styled.div`
 `;
 
 export default function Editor() {
-  const md = new MarkdownIt();
   const [text, setText] = useState(markdownExample);
 
   const handleInput = (event) => {
