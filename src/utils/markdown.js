@@ -1,12 +1,12 @@
 import MarkdownIt from "markdown-it";
-import iterator from "markdown-it-for-inline";
-import important_plugin from "./plugin";
+import { important_plugin } from "./plugins/important";
+import color from "./plugins/color";
+import bgColor from "./plugins/bgColor";
 
 const markdownParser = new MarkdownIt();
 
 markdownParser.use(important_plugin);
-// markdownParser.use(iterator, "fontColor", "text", (tokens, idx) => {
-//   // rules
-// });
+markdownParser.inline.ruler.push("bgColor", bgColor);
+markdownParser.inline.ruler.push("color", color);
 
 export { markdownParser };
