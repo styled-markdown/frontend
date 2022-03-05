@@ -14,7 +14,6 @@ export default function bgColor(state, silent) {
   const regex = /%%(.+?)_(.+?)%%/;
   const match = text.match(regex);
 
-  console.log(match);
   if (!match) return false;
 
   let token = state.push("bgColor_open", "span", 1);
