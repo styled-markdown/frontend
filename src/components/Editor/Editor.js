@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
 
+import { markdownState } from "../../recoil";
 import { markdownParser as md } from "../../utils/markdown";
-import { markdownExample } from "../../constants/constants";
+import { markdownExample } from "../../constants";
 
 const EditorContainer = styled.div`
   width: 30%;
@@ -46,7 +48,7 @@ const EditorBody = styled.div`
 `;
 
 export default function Editor() {
-  const [text, setText] = useState(markdownExample);
+  const [text, setText] = useRecoilState(markdownState);
 
   const handleInput = (event) => {
     setText(event.target.innerText);
