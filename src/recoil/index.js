@@ -5,3 +5,8 @@ export const markdownState = atom({
   key: "markdownState",
   default: markdownExample,
 });
+
+export const loginState = atom({
+  key: "loginState",
+  default: false,
+});
