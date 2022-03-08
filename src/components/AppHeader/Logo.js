@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LogoContainer = styled.div`
@@ -8,6 +9,10 @@ const LogoContainer = styled.div`
   height: 100%;
   padding: 5px;
   cursor: pointer;
+
+  a {
+    text-decoration: none;
+  }
 
   span {
     font-size: 20px;
@@ -19,7 +24,9 @@ const LogoContainer = styled.div`
 export default function Logo() {
   return (
     <LogoContainer>
-      <span>Styled-Markdown</span>
+      <Link to="/">
+        <span>Styled-Markdown</span>
+      </Link>
     </LogoContainer>
   );
 }
