@@ -9,6 +9,7 @@ import { queryClient } from "../../reactQuery";
 import AppHeader from "../AppHeader/AppHeader";
 import IndexPage from "../IndexPage/IndexPage";
 import MyDocs from "../MyDocs/MyDocs";
+import NewDoc from "../NewDoc/NewDoc";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<IndexPage />} />
             <Route path="/mydocs" element={<MyDocs />} />
+            <Route path="/docs/new" element={<NewDoc />} />
           </Routes>
           <ReactQueryDevtools initialIsOpen={false} />
         </BrowserRouter>

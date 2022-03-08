@@ -93,7 +93,7 @@ export default function DocBox({ id, title, createdAt, updatedAt, summary }) {
           <span>{convertUpdatedDate(updatedAt)}</span>
         </div>
         <div className="tools">
-          <Link to={`/docs/${id}`}>
+          <Link to={`/docs/detail/${id}`}>
             <img src="/icons/edit.svg" alt="edit" />
           </Link>
           <img src="/icons/delete.svg" alt="delete" />

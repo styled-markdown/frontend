@@ -11,6 +11,7 @@ import { loginApi, joinApi } from "../../api";
 import { auth } from "../../firebase";
 
 const LoginWrapper = styled.li`
+  margin: 0 5px;
   list-style: none;
   font-size: 20px;
   color: #ffffff;
