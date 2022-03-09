@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
+import PropTypes from "prop-types";
 
-import { markdownState } from "../../recoil";
 import { markdownParser as md } from "../../utils/markdown";
-import { markdownExample } from "../../constants";
+
+const Article = styled.article`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+`;
 
 const EditorContainer = styled.div`
   width: 30%;
@@ -47,22 +53,22 @@ const EditorBody = styled.div`
   }
 `;
 
-export default function Editor() {
-  const [text, setText] = useRecoilState(markdownState);
+export default function Editor({ text, onInput }) {
+  const [body, setBody] = useState("");
 
-  const handleInput = (event) => {
-    setText(event.target.innerText);
-  };
+  useEffect(() => {
+    setBody(text);
+  }, []);
 
   return (
-    <>
+    <Article>
       <EditorContainer>
         <EditorBody
           contentEditable
           suppressContentEditableWarning={true}
-          onInput={handleInput}
+          onInput={onInput}
         >
-          {markdownExample}
+          {body}
         </EditorBody>
       </EditorContainer>
       <EditorContainer>
@@ -70,6 +76,11 @@ export default function Editor() {
           dangerouslySetInnerHTML={{ __html: md.render(text) }}
         ></EditorBody>
       </EditorContainer>
-    </>
+    </Article>
   );
 }
+
+Editor.propTypes = {
+  text: PropTypes.string,
+  onInput: PropTypes.func.isRequired,
+};

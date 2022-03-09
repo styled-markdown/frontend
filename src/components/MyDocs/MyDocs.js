@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { getDocsApi } from "../../api";
 import DocsList from "./DocsList";
 import Loading from "../Loading/Loading";
-import ErrorPage from "../ErrorPage/ErrorPage";
+import ErrorPage from "../Errors/ErrorPage";
 
 export default function MyDocs() {
   const { data, isLoading, isSuccess, isError } = useQuery(
