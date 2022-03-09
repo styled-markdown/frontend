@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
-
-import { markdownState } from "../../recoil";
 
 import Editor from "../Editor/Editor";
 import ExportToolbar from "../ExportToolbar/ExportToolbar";
 
-const AppSection = styled.section`
+import { markdownExample } from "../../constants";
+
+const BodyContainer = styled.div`
   padding: 20px;
 
   .welcome {
@@ -17,17 +16,17 @@ const AppSection = styled.section`
 `;
 
 export default function IndexPage() {
-  const [text, setText] = useRecoilState(markdownState);
+  const [text, setText] = useState(markdownExample);
 
-  const handleEditorInput = (event) => {
-    setText(event.target.innerText);
+  const handleTextInput = (event) => {
+    setText(event.target.value);
   };
 
   return (
-    <AppSection>
+    <BodyContainer>
       <h1 className="welcome">어서오세요, Styled-markdown은 처음이신가요?</h1>
-      <Editor text={text} onInput={handleEditorInput} />
+      <Editor text={text} onChange={handleTextInput} />
       <ExportToolbar text={text} />
-    </AppSection>
+    </BodyContainer>
   );
 }

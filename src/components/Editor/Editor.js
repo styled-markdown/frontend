@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { markdownParser as md } from "../../utils/markdown";
 
-const Article = styled.article`
+const Article = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,60 +21,42 @@ const EditorContainer = styled.div`
   box-shadow: 0px 1px 5px rgb(0, 0, 0, 0.5);
 `;
 
-const EditorBody = styled.div`
+const EditorBody = styled.textarea`
+  width: 100%;
   height: 100%;
+  border: none;
+  padding-right: 10px;
   outline: none;
   overflow: auto;
+  resize: none;
   white-space: pre-line;
-
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #dadada;
-    border-radius: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #c2c4b6;
-  }
-
-  ::-webkit-scrollbar-thumb:active {
-    background-color: #c2c4b6;
-  }
-
-  ::-webkit-scrollbar-button {
-    display: none;
-  }
+  font-size: 15px;
 `;
 
-export default function Editor({ text, onInput }) {
-  const [body, setBody] = useState("");
+const PreviewBody = styled.div`
+  height: 100%;
+  padding-right: 10px;
+  outline: none;
+  overflow: auto;
+  font-size: 15px;
+`;
 
-  useEffect(() => {
-    setBody(text);
-  }, []);
-
+export default function Editor({ text, onChange }) {
   return (
     <Article>
       <EditorContainer>
         <EditorBody
-          contentEditable
-          suppressContentEditableWarning={true}
-          onInput={onInput}
-        >
-          {body}
-        </EditorBody>
+          className="editorContainer"
+          onChange={onChange}
+          value={text}
+          spellCheck="false"
+        ></EditorBody>
       </EditorContainer>
       <EditorContainer>
-        <EditorBody
+        <PreviewBody
+          className="editorContainer"
           dangerouslySetInnerHTML={{ __html: md.render(text) }}
-        ></EditorBody>
+        ></PreviewBody>
       </EditorContainer>
     </Article>
   );
@@ -82,5 +64,5 @@ export default function Editor({ text, onInput }) {
 
 Editor.propTypes = {
   text: PropTypes.string,
-  onInput: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
