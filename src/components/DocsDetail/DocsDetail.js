@@ -23,8 +23,8 @@ export default function DocsDetail() {
     }
   );
 
-  const handleEditorInput = (event) => {
-    setText(event.target.innerText);
+  const handleTextInput = (event) => {
+    setText(event.target.value);
   };
 
   return (
@@ -33,7 +33,7 @@ export default function DocsDetail() {
       {isError && <NotFound />}
       {!isFetching && isSuccess && (
         <>
-          <Editor text={text} onInput={handleEditorInput} />
+          <Editor text={text} onChange={handleTextInput} />
           <ExportToolbar text={text} mode="detail" />
         </>
       )}

@@ -44,10 +44,7 @@ export default function ExportToolbar({ text, mode }) {
 
   const saveDocMutation = useMutation(saveDocApi, {
     onError: (error) => {
-      console.log("error", error);
-    },
-    onSuccess: () => {
-      console.log("success");
+      console.error(error);
     },
   });
 
