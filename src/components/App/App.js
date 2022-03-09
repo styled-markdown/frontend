@@ -10,6 +10,7 @@ import AppHeader from "../AppHeader/AppHeader";
 import IndexPage from "../IndexPage/IndexPage";
 import MyDocs from "../MyDocs/MyDocs";
 import NewDoc from "../NewDoc/NewDoc";
+import DocsDetail from "../DocsDetail/DocsDetail";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/" element={<IndexPage />} />
             <Route path="/mydocs" element={<MyDocs />} />
             <Route path="/docs/new" element={<NewDoc />} />
+            <Route path="/docs/detail/:id" element={<DocsDetail />} />
           </Routes>
           <ReactQueryDevtools initialIsOpen={false} />
         </BrowserRouter>

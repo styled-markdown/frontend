@@ -1,12 +1,23 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useMutation } from "react-query";
 
-import { markdownState } from "../../recoil";
 import ExportToolbarButton from "./ExportToolbarButton";
-import { markdownParser as md } from "../../utils/markdown";
 
-export default function ExportToolbar() {
-  const text = useRecoilValue(markdownState);
+import { markdownParser as md } from "../../utils/markdown";
+import { saveDocApi } from "../../api";
+import { useParams } from "react-router-dom";
+
+const ExportToolbarContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+`;
+
+export default function ExportToolbar({ text, mode }) {
+  const { id } = useParams();
 
   const handleCopyHtmlClick = async () => {
     try {
@@ -31,10 +42,35 @@ export default function ExportToolbar() {
     link.remove();
   };
 
+  const saveDocMutation = useMutation(saveDocApi, {
+    onError: (error) => {
+      console.log("error", error);
+    },
+    onSuccess: () => {
+      console.log("success");
+    },
+  });
+
   return (
     <>
-      <ExportToolbarButton name="Copy HTML" onClick={handleCopyHtmlClick} />
-      <ExportToolbarButton name="Save as HTML" onClick={handleSaveHtmlClick} />
+      <ExportToolbarContainer>
+        {mode === "detail" && (
+          <ExportToolbarButton
+            name="SAVE"
+            onClick={() => saveDocMutation.mutate({ id, body: text })}
+          />
+        )}
+        <ExportToolbarButton name="Copy HTML" onClick={handleCopyHtmlClick} />
+        <ExportToolbarButton
+          name="Save as HTML"
+          onClick={handleSaveHtmlClick}
+        />
+      </ExportToolbarContainer>
     </>
   );
 }
+
+ExportToolbar.propTypes = {
+  text: PropTypes.string,
+  mode: PropTypes.string,
+};

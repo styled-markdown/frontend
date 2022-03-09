@@ -22,3 +22,13 @@ export const createDocApi = async (title) => {
   const res = await axios.post("/api/docs", { title });
   return res;
 };
+
+export const getDocDetailApi = async (id) => {
+  const res = await axios.get(`/api/docs/${id}`);
+  return res;
+};
+
+export const saveDocApi = async ({ id, body }) => {
+  const res = await axios.put(`/api/docs/${id}`, { body });
+  return res;
+};
