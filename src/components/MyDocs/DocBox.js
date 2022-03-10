@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import { convertDate, convertUpdatedDate } from "../../utils/utils";
+import { deleteDocApi } from "../../api";
+import { useMutation, useQueryClient } from "react-query";
 
 const DocContainer = styled.div`
   margin: 5px;
@@ -38,6 +40,7 @@ const DocInfo = styled.div`
       width: 30px;
       height: 30px;
       margin: 0 5px;
+      cursor: pointer;
     }
   }
 
@@ -65,9 +68,20 @@ const DocPreview = styled.div`
 
 export default function DocBox({ id, title, createdAt, updatedAt, summary }) {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const queryClient = useQueryClient();
+
+  const deleteDocMutation = useMutation(deleteDocApi, {
+    onSuccess: () => {
+      queryClient.fetchQuery("docsList");
+    },
+  });
 
   const handleArrowButtonClick = () => {
     setIsPreviewOpen(!isPreviewOpen);
+  };
+
+  const handleDeleteClick = () => {
+    deleteDocMutation.mutate(id);
   };
 
   return (
@@ -96,7 +110,11 @@ export default function DocBox({ id, title, createdAt, updatedAt, summary }) {
           <Link to={`/docs/detail/${id}`}>
             <img src="/icons/edit.svg" alt="edit" />
           </Link>
-          <img src="/icons/delete.svg" alt="delete" />
+          <img
+            onClick={handleDeleteClick}
+            src="/icons/delete.svg"
+            alt="delete"
+          />
         </div>
       </DocInfo>
       {isPreviewOpen && (
