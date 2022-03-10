@@ -32,3 +32,8 @@ export const saveDocApi = async ({ id, body }) => {
   const res = await axios.put(`/api/docs/${id}`, { body });
   return res;
 };
+
+export const deleteDocApi = async (id) => {
+  const res = await axios.delete(`/api/docs/${id}`);
+  return res;
+};
