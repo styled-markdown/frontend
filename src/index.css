@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+p code {
+  margin: 0 5px;
+  padding: 0 5px;
+  border-radius: 5px;
+  background-color: #DADADA;
+  color: #5D7599
+}
+
+pre {
+  background-color: #DADADA;
+  padding: 5px;
+}
+
+pre code {
+  color: #5D7599;
+}
+
+.editorContainer::-webkit-scrollbar {
+  width: 5px;
+}
+
+.editorContainer::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.editorContainer::-webkit-scrollbar-thumb {
+  background-color: #dadada;
+  border-radius: 5px;
+}
+
+.editorContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #c2c4b6;
+}
+
+.editorContainer::-webkit-scrollbar-thumb:active {
+  background-color: #c2c4b6;
+}
+
+.editorContainer::-webkit-scrollbar-button {
+  display: none;
+}
