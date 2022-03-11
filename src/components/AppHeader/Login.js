@@ -30,7 +30,7 @@ export default function Login() {
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       setIsLoggedIn(true);
     }
-  }, []);
+  }, [setIsLoggedIn]);
 
   const joinMutation = useMutation(joinApi, {
     onSuccess: (variable) => {
