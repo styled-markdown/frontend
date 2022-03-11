@@ -1,0 +1,47 @@
+.editorContainer h1 {
+  margin-block-start: 0.67em;
+  margin-block-end: 0.4em;
+}
+
+.editorContainer h2 {
+  margin-block-start: 0.83em;
+  margin-block-end: 0.5em;
+}
+
+.editorContainer p {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+.editorContainer blockquote {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding: 10px 0;
+  padding-left: 15px;
+  background-color: #DADADA;
+}
+
+.editorContainer blockquote > p {
+  padding-left: 10px;
+  border-left: 2px solid #000000;
+  content: " ";
+}
+
+.editorContainer p code {
+  margin: 0 5px;
+  padding: 0 5px;
+  border-radius: 5px;
+  background-color: #DADADA;
+  color: #5D7599
+}
+
+.editorContainer pre {
+  background-color: #DADADA;
+  padding: 5px;
+}
+
+.editorContainer pre code {
+  color: #5D7599;
+}

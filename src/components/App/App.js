@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 
 import { queryClient } from "../../reactQuery";
 
@@ -24,7 +23,6 @@ export default function App() {
             <Route path="/docs/new" element={<NewDoc />} />
             <Route path="/docs/detail/:id" element={<DocsDetail />} />
           </Routes>
-          <ReactQueryDevtools initialIsOpen={false} />
         </BrowserRouter>
       </QueryClientProvider>
     </RecoilRoot>

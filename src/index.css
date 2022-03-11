@@ -1,26 +1,12 @@
 * {
   box-sizing: border-box;
+  font-family: 'Noto Sans KR', 'Open Sans', sans-serif;
 }
 
 body {
+  height: 100vh;
   margin: 0;
-}
-
-p code {
-  margin: 0 5px;
-  padding: 0 5px;
-  border-radius: 5px;
-  background-color: #DADADA;
-  color: #5D7599
-}
-
-pre {
-  background-color: #DADADA;
-  padding: 5px;
-}
-
-pre code {
-  color: #5D7599;
+  background: linear-gradient(to bottom right, #E9BCAC, #D1C6F3);
 }
 
 .editorContainer::-webkit-scrollbar {

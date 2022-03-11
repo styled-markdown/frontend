@@ -10,12 +10,23 @@ const LogoContainer = styled.div`
   padding: 5px;
   cursor: pointer;
 
+  .logoImgContainer {
+    height: 100%;
+    margin: 0 5px;
+    object-fit: scale-down;
+  }
+
   a {
     text-decoration: none;
   }
 
-  span {
-    font-size: 20px;
+  img {
+    height: 100%;
+  }
+
+  p {
+    margin: 0;
+    font-size: 15px;
     color: #ffffff;
     user-select: none;
   }
@@ -24,8 +35,12 @@ const LogoContainer = styled.div`
 export default function Logo() {
   return (
     <LogoContainer>
+      <div className="logoImgContainer">
+        <img src="/icons/logo_white.png" alt="logo" />
+      </div>
       <Link to="/">
-        <span>Styled-Markdown</span>
+        <p>Styled</p>
+        <p>Markdown</p>
       </Link>
     </LogoContainer>
   );
