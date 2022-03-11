@@ -10,8 +10,9 @@ import { useMutation, useQueryClient } from "react-query";
 const DocContainer = styled.div`
   margin: 5px;
   padding: 5px;
-  border: 1px solid #abb6c8;
+  border: 1px solid #a494d7;
   border-radius: 5px;
+  background-color: #fef5f1;
 `;
 
 const DocInfo = styled.div`

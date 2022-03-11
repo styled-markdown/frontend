@@ -17,6 +17,7 @@ const EditorContainer = styled.div`
   min-width: 500px;
   height: 70vh;
   padding: 20px;
+  background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 1px 5px rgb(0, 0, 0, 0.5);
 `;
