@@ -1,13 +1,14 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useMutation } from "react-query";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useMutation } from "react-query";
 
 import ExportToolbarButton from "./ExportToolbarButton";
 
 import { markdownParser as md } from "../../utils/markdown";
 import { saveDocApi } from "../../api";
-import { useParams } from "react-router-dom";
+import { styles } from "../../constants";
 
 const ExportToolbarContainer = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ export default function ExportToolbar({ text, mode }) {
   };
 
   const handleSaveHtmlClick = () => {
-    const newBlob = new Blob([md.render(text)], {
+    const newBlob = new Blob([styles, md.render(text)], {
       type: "text/html",
       endings: "native",
     });
@@ -59,7 +60,7 @@ export default function ExportToolbar({ text, mode }) {
         )}
         <ExportToolbarButton name="Copy HTML" onClick={handleCopyHtmlClick} />
         <ExportToolbarButton
-          name="Save as HTML"
+          name="Save as Styled HTML"
           onClick={handleSaveHtmlClick}
         />
       </ExportToolbarContainer>
