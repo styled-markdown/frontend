@@ -1,4 +1,4 @@
-export const important_plugin = (md) => {
+export const important = (md) => {
   const tokenize = (state, silent) => {
     const start = state.pos;
     const marker = state.src.charCodeAt(start);
