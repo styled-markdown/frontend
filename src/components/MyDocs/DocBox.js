@@ -74,6 +74,7 @@ export default function DocBox({ id, title, createdAt, updatedAt, summary }) {
   const deleteDocMutation = useMutation(deleteDocApi, {
     onSuccess: () => {
       queryClient.fetchQuery("docsList");
+      alert("삭제되었습니다.");
     },
   });
 
