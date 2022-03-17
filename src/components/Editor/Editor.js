@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -43,12 +43,24 @@ const PreviewBody = styled.div`
 `;
 
 export default function Editor({ text, onChange }) {
+  const preview = useRef();
+
+  const handleScroll = (event) => {
+    const position = event.target.scrollTop;
+    const height = event.target.scrollHeight;
+    const currScroll = position / height;
+
+    const target = preview.current;
+    target.scrollTop = currScroll * target.scrollHeight;
+  };
+
   return (
     <Article>
       <EditorContainer>
         <EditorBody
           className="editorContainer"
           onChange={onChange}
+          onScroll={handleScroll}
           value={text}
           spellCheck="false"
         ></EditorBody>
@@ -56,6 +68,7 @@ export default function Editor({ text, onChange }) {
       <EditorContainer>
         <PreviewBody
           className="editorContainer"
+          ref={preview}
           dangerouslySetInnerHTML={{ __html: md.render(text) }}
         ></PreviewBody>
       </EditorContainer>

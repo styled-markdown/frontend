@@ -46,6 +46,10 @@ export default function ExportToolbar({ text, mode }) {
   const saveDocMutation = useMutation(saveDocApi, {
     onError: (error) => {
       console.error(error);
+      alert("오류가 발생했습니다. 다시 시도해 주세요.");
+    },
+    onSuccess: () => {
+      alert("저장되었습니다.");
     },
   });
 
